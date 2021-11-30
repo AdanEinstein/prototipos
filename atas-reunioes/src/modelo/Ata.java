@@ -1,28 +1,49 @@
 package modelo;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import execucao.CrudFuncionario;
 
 public class Ata {
 
+	private Integer id;
 	private Funcionario emissor;
 	private String tituloReuniao;
 	private Date dataEmissao;
 	private List<Pessoa> participantes;
 	private String pauta;
 	private Date dataReuniao;
-	private Date horaInicial;
-	private Date horaFinal;
+	private Time horaInicial;
+	private Time horaFinal;
 	private String setor;
 	private String descricao;
-	private String[] palavrasChave = new String[5];
+	private List<String> palavrasChave;
 	private Integer numeroParticipantes;
 	private Visibilidade visibilidade;
-	
-	
+
+	public Ata(Integer id, Funcionario emissor, String tituloReuniao, List<Pessoa> participantes, String pauta,
+			Date dataReuniao, Time horaInicial, Time horaFinal, String setor, String descricao, List<String> palavrasChave,
+			Visibilidade visibilidade) {
+		this.id = id;
+		this.emissor = emissor;
+		this.tituloReuniao = tituloReuniao;
+		this.participantes = participantes;
+		this.pauta = pauta;
+		this.dataReuniao = dataReuniao;
+		this.horaInicial = horaInicial;
+		this.horaFinal = horaFinal;
+		this.setor = setor;
+		this.descricao = descricao;
+		this.palavrasChave = palavrasChave;
+		this.visibilidade = visibilidade;
+	}
 
 	public Ata(Funcionario emissor, String tituloReuniao, List<Pessoa> participantes, String pauta, Date dataReuniao,
-			Date horaInicial, Date horaFinal, String setor, String descricao, String[] palavrasChave,
+
+			Time horaInicial, Time horaFinal, String setor, String descricao, List<String> palavrasChave,
 			Visibilidade visibilidade) {
 		this.emissor = emissor;
 		this.tituloReuniao = tituloReuniao;
@@ -35,6 +56,14 @@ public class Ata {
 		this.descricao = descricao;
 		this.palavrasChave = palavrasChave;
 		this.visibilidade = visibilidade;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Funcionario getEmissor() {
@@ -85,19 +114,19 @@ public class Ata {
 		this.dataReuniao = dataReuniao;
 	}
 
-	public Date getHoraInicial() {
+	public Time getHoraInicial() {
 		return horaInicial;
 	}
 
-	public void setHoraInicial(Date horaInicial) {
+	public void setHoraInicial(Time horaInicial) {
 		this.horaInicial = horaInicial;
 	}
 
-	public Date getHoraFinal() {
+	public Time getHoraFinal() {
 		return horaFinal;
 	}
 
-	public void setHoraFinal(Date horaFinal) {
+	public void setHoraFinal(Time horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 
@@ -117,11 +146,11 @@ public class Ata {
 		this.descricao = descricao;
 	}
 
-	public String[] getPalavrasChave() {
+	public List<String> getPalavrasChave() {
 		return palavrasChave;
 	}
 
-	public void setPalavrasChave(String[] palavrasChave) {
+	public void setPalavrasChave(List<String> palavrasChave) {
 		this.palavrasChave = palavrasChave;
 	}
 
@@ -136,9 +165,34 @@ public class Ata {
 	public Visibilidade getVisibilidade() {
 		return visibilidade;
 	}
+	
+	public String getVisibilidadeString() {
+		if(this.getVisibilidade() == Visibilidade.PRIVADA) {
+			return "PRIVADA";
+		}
+		return "PUBLICA";
+	}
 
 	public void setVisibilidade(Visibilidade visibilidade) {
 		this.visibilidade = visibilidade;
 	}
 
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat shf = new SimpleDateFormat("HH:mm");
+		return "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+				+ "\nTítulo: " + this.getTituloReuniao()
+				+ "\nData de Emissão: " + sdf.format(this.getDataEmissao())
+				+ "\nVisibilidade: " + this.getVisibilidadeString()
+				+ "\nPauta: " + this.getPauta()
+				+ "\nDescrição: " + this.getDescricao()
+				+ "\nData Reunião: " + sdf.format(this.getDataReuniao())
+				+ "\nInício: " + shf.format(this.getHoraInicial())
+				+ "\nFim: " + shf.format(this.getHoraFinal())
+				+ "\nSetor: " + this.getSetor()
+				+ "\nEmissor: " + CrudFuncionario.nomeEmissorPorIdAta(this.getId())
+				+ "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+	}
+	
 }
