@@ -20,7 +20,7 @@ if (empty($user)) {
     $result = $conexao->select($sql, null, true);
     if ($result->rowCount() == 0) {
         $sql = "INSERT INTO pdv_usuarios VALUES (DEFAULT, :user, :password, :perfil)";
-        $params = [":user" => $user, ":password" => $password, ":perfil" => 'padrão'];
+        $params = [":user" => $user, ":password" => $password, ":perfil" => 'pendente'];
         if ($conexao->executeSQL($sql, $params)) {
             $_SESSION['resposta'] = 'Usuário cadastrado com sucesso!';
             header("Location: ../index.php");

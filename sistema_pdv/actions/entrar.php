@@ -17,8 +17,16 @@ if (empty($login)) {
 
     if ($dados["login"] == $login and $dados["senha"] == $senha) {
         $usuario = array("login" => $dados['login'], "senha" => $dados['senha'], "perfil" => $dados['perfil']);
-        $_SESSION['usuario'] = $usuario;
-        header("Location: ../home.php");
+        if($dados["perfil"] == "adm"){
+            $_SESSION['adm'] = $usuario;
+            header("Location: ../home.php");
+        } elseif ($dados["perfil"] == "padrão"){
+            $_SESSION['usuario'] = $usuario;
+            header("Location: ../home.php");
+        } else {
+            $_SESSION['resposta'] = "Aguarde aprovação do seu cadastro!";
+            header("Location: ../index.php");
+        }
     } else {
         $_SESSION['resposta'] = "Login ou senha inválidos";
         header("Location: ../index.php");

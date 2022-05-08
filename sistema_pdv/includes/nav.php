@@ -10,6 +10,7 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <?php if(isset($_SESSION["usuario"])):?>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -22,10 +23,22 @@
                     <a href="venderProdutos.php" class="nav-link my-1">Vender</a>
                 </li>
                 <li class="nav-item d-lg-none">
-                    <a href="venderProdutos.php" class="btn btn-danger fw-lighter w-100 my-1">SAIR</a>
+                    <a href="index.php" class="btn btn-danger fw-lighter w-100 my-1">SAIR</a>
                 </li>
             </ul>
         </div>
+        <?php elseif (isset($_SESSION["adm"])):?>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="listaUsers.php" class="nav-link my-1">Lista de usuários</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a href="index.php" class="btn btn-danger fw-lighter w-100 my-1">SAIR</a>
+                </li>
+            </ul>
+        </div>
+        <?php endif;?>
         <div class="d-lg-block d-none">
             <a class="btn btn-danger fw-lighter" style="width: 150px" href="index.php">SAIR</a>
         </div>
