@@ -8,11 +8,12 @@ if (isset($_POST["email"]) && !empty($_POST["email"])) {
     $result = $conexao->select($sql, null, true);
     if ($result->rowCount() > 0) {
         $loginid = $result->fetch(PDO::FETCH_ASSOC)["id"];
-        $from = $result->fetch(PDO::FETCH_ASSOC)["login"];
+        $to = $result->fetch(PDO::FETCH_ASSOC)["login"];
+        $from = "";
         $message = rand();
         $headers = "From: " . $from;
         $_SESSION["resposta"] = "Enviamos uma senha nova para seu e-mail!";
-        $envio = mail("pdv.sistema2022@gmail.com", "Senha gerada para você, redefinir sua senha!", $message, $headers);
+        $envio = mail($to, "Senha gerada para você, redefinir sua senha!", $message, $headers);
         if (!$envio) {
             $sql = "UPDATE pdv_usuarios SET senha = :senha WHERE id = :id";
             $params = [":senha" => $message, ":id" => $loginid];
