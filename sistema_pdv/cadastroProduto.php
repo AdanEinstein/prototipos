@@ -10,7 +10,7 @@ session_start();
         <div class="row">
             <div class="col"></div>
             <div class="col-md-6 col-12 d-flex flex-column my-4 py-3 align-items-center"
-                 style="background: rgba(204,204,204,0.63); border-radius: 10px; ">
+                 style="background: rgba(204,204,204,0.38); border-radius: 10px; ">
                 <h2 class="text-center text-white fw-bolder mb-3">Cadastre o seu produto!</h2>
                 <form action="actions/actioncadastrarproduto.php" method="post" class="w-75">
                     <div class="form-floating mb-3">

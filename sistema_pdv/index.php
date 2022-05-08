@@ -4,7 +4,8 @@ include_once "includes/header.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col"></div>
-        <div class="col-md-6 col-12 d-flex flex-column my-4 py-3 align-items-center"  style="background: rgba(204,204,204,0.63); border-radius: 10px; ">
+        <div class="col-md-6 col-12 d-flex flex-column my-4 py-3 align-items-center"
+             style="background: rgba(204,204,204,0.38); border-radius: 10px; ">
             <h2 class="text-center text-white fw-bolder mb-5">Faça o seu login!</h2>
             <form action="actions/entrar.php" method="post" class="w-75">
                 <div class="form-floating mb-3">
@@ -28,11 +29,13 @@ include_once "includes/header.php";
                 session_unset();
                 ?>
                 <div class="d-flex justify-content-between">
-                    <a href="cadastroUser.php" class="btn btn-outline-light bg-opacity-25 me-2 w-25 d-lg-block d-none">Faça
+                    <a href="cadastroUser.php" class="btn btn-outline-light bg-opacity-25 me-2 w-50 d-xxl-block d-none">Faça
                         seu cadastro!</a>
-                    <a href="cadastroUser.php" class="btn btn-outline-light bg-opacity-25 me-2 w-50 d-lg-none d-block">Cadastre-se</a>
-                    <button class="btn bg-primary text-white w-25" type="submit">Entrar</button>
+                    <a href="cadastroUser.php" class="btn btn-outline-light bg-opacity-25 me-2 w-50 d-xxl-none d-block">Cadastre-se</a>
+                    <button class="btn bg-primary text-white w-50" type="submit">Entrar</button>
                 </div>
+                <a href="recuperarSenha.php" class="btn btn-outline-warning w-100 bg-opacity-25 my-3">Esqueci minha senha!</a>
+
             </form>
         </div>
         <div class="col"></div>

@@ -34,13 +34,16 @@ if (!isset($_SESSION["vendaid"])) {
     include_once "includes/nav.php";
     ?>
     <main class="bg-light bg-opacity-75 p-md-3 p-2 m-md-3 my-3">
-        <h2 class="titulo" style="font-weight: bold">
+        <h2 class="titulo d-sm-block d-none" style="font-weight: bold">
             Pronto para vender? Vamos lá!
+        </h2>
+        <h2 class="titulo d-sm-none d-block" style="font-weight: bold">
+            Vamos vender!
         </h2>
         <hr>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?php print(isset($_SESSION["relatorio"]) ? "" : "active") ?>"
+                <button class="nav-link  <?php print(isset($_SESSION["relatorio"]) ? "" : "active") ?>"
                         id="pill-lista-vendas" data-bs-toggle="pill"
                         data-bs-target="#pills-lista" type="button" role="tab" aria-controls="pills-lista"
                 >Lista de Compras

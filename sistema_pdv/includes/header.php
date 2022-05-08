@@ -11,7 +11,7 @@
     <title>Sistema PDV</title>
 </head>
 <body class="bg-dark vh-100">
-    <header class="bg-primary text-white p-3 vw-100 top-0">
+    <header class="text-white p-3 vw-100 top-0" style="background: linear-gradient(to right, rgb(170, 7, 107), rgb(97, 4, 95));">
         <h1>Sistema PDV</h1>
         <h2 class="d-md-block d-none">Seu sistema de estoque e vendas em um só lugar</h2>
     </header>

@@ -6,12 +6,13 @@ session_start();
         <div class="row">
             <div class="col"></div>
             <div class="col-md-6 col-12 d-flex flex-column my-4 py-3 align-items-center"
-                 style="background: rgba(204,204,204,0.63); border-radius: 10px; ">
+                 style="background: rgba(204,204,204,0.38); border-radius: 10px; ">
                 <h2 class="text-center text-white mb-5 fw-bolder">Cadastre-se aqui!</h2>
                 <form action="actions/actioncadastraruser.php" method="post" class="w-75">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="user" name="user">
+                        <input type="email" class="form-control" id="user" name="user" aria-describedby="aviso">
                         <label for="user">User</label>
+                        <div id="aviso" class="form-text text-white">Dica: Digite o seu e-mail para que seja possível recuperar sua senha caso esqueça!</div>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" name="password">

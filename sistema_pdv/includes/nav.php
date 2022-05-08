@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark"
-     style="background-color: #1b86ff; box-shadow: 5px 5px 15px -3px #000000;">
+     style="background: linear-gradient(to right, rgb(170, 7, 107), rgb(97, 4, 95)); box-shadow: 5px 5px 15px -3px #000000;">
     <div class="container-fluid">
         <a class="navbar-brand" href="home.php">
             <img src="./images/basket-fill.svg" alt="" width="30" height="24"
@@ -22,12 +22,12 @@
                     <a href="venderProdutos.php" class="nav-link my-1">Vender</a>
                 </li>
                 <li class="nav-item d-lg-none">
-                    <a href="venderProdutos.php" class="btn btn-danger w-100 my-1">Sair</a>
+                    <a href="venderProdutos.php" class="btn btn-danger fw-lighter w-100 my-1">SAIR</a>
                 </li>
             </ul>
         </div>
         <div class="d-lg-block d-none">
-            <a class="btn btn-danger" style="width: 150px" href="index.php">Sair</a>
+            <a class="btn btn-danger fw-lighter" style="width: 150px" href="index.php">SAIR</a>
         </div>
     </div>
 </nav>

@@ -4,6 +4,7 @@ require_once '../banco/conexBanco.php';
 $user = $_POST['user'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
+$conexao = new DAO();
 
 if (empty($user)) {
     $_SESSION['resposta'] = 'Preencha o campo user!';
@@ -15,11 +16,20 @@ if (empty($user)) {
     $_SESSION['resposta'] = 'Senhas não correspondentes!';
     header("Location: ../cadastroUser.php");
 } else {
-    $sql = "INSERT INTO pdv_usuarios VALUES (DEFAULT, :user, :password, :perfil)";
-    $params = [":user"=>$user, ":password"=>$password, ":perfil"=>'padrão'];
-    $conexao = new DAO();
-    if ($conexao->executeSQL($sql, $params)) {
-        $_SESSION['resposta'] = 'Usuário cadastrado com sucesso!';
+    $sql = "SELECT * FROM pdv_usuarios WHERE login = '$user'";
+    $result = $conexao->select($sql, null, true);
+    if ($result->rowCount() == 0) {
+        $sql = "INSERT INTO pdv_usuarios VALUES (DEFAULT, :user, :password, :perfil)";
+        $params = [":user" => $user, ":password" => $password, ":perfil" => 'padrão'];
+        if ($conexao->executeSQL($sql, $params)) {
+            $_SESSION['resposta'] = 'Usuário cadastrado com sucesso!';
+            header("Location: ../index.php");
+        } else {
+            $_SESSION['resposta'] = 'Erro de cadastro!';
+            header("Location: ../index.php");
+        }
+    } else {
+        $_SESSION['resposta'] = 'Usuário já existe!';
         header("Location: ../index.php");
     }
 }
